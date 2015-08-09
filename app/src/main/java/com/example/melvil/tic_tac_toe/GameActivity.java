@@ -17,17 +17,10 @@ import java.util.Map;
  * Created by Melvil on 07/08/15.
  */
 public class GameActivity extends Activity {
-    Map<Uri,String> playerIpName;
-    URL url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        try {
-            url =  new URL("abbaye.noip.me");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

@@ -20,8 +20,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         b = (ImageButton) findViewById(R.id.drapeau);
-        Ll = new LinearLayout(this);
-        Ll = (LinearLayout) findViewById(R.id.LinearLayout);
         play = (Button) findViewById(R.id.play);
         choice = true;
         play.setOnClickListener(new View.OnClickListener() {
