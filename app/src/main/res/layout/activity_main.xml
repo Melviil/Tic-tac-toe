@@ -36,14 +36,6 @@
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true" />
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,15 +54,6 @@
         android:layout_below="@+id/drapeau"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:text="Leave the app"
-        android:id="@+id/end"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/drapeau"
-        android:layout_alignEnd="@+id/drapeau" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,7 +67,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"></LinearLayout>
 
