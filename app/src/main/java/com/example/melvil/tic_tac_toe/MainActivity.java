@@ -35,11 +35,7 @@ public class MainActivity extends Activity {
                     Toast.makeText(getApplicationContext(), "Aucun nom n'a été rentré", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                    intent.putExtra("et", (Serializable) et);
                     startActivity(intent);
-
-                    String str = (String) getIntent().getSerializableExtra("et");
-
                 }
             }
         });
