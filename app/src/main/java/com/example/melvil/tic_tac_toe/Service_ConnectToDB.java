@@ -24,44 +24,42 @@ public class Service_ConnectToDB extends Service {
     URL abbaye;
 
     public Service_ConnectToDB() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
         try {
             abbaye = new URL("abbaye.noip.me");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
         return new MyBinder();
     }
 
     public class MyBinder extends Binder {
-        public Service_ConnectToDB getMyservice() {
+        public Service_ConnectToDB getMyService() {
             return new Service_ConnectToDB();
         }
-        //TODO verify this code
-        public Map<String, URL> getNamesAndIp() {
+    }
+    //TODO verify this code
+    public Map<String, URL> getNamesAndIp() {
+        try {
+            HttpURLConnection urlConnection = (HttpURLConnection)abbaye.openConnection();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            StringBuilder stringBuilder = new StringBuilder();
+            int cp;
             try {
-                HttpURLConnection urlConnection = (HttpURLConnection)abbaye.openConnection();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                StringBuilder stringBuilder = new StringBuilder();
-                int cp;
-                try {
-                    while ((cp = reader.read()) != -1) {
-                        stringBuilder.append((char) cp);
-                    }
-                    String json=stringBuilder.toString();
-                    Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                while ((cp = reader.read()) != -1) {
+                    stringBuilder.append((char) cp);
                 }
-            } catch (IOException e) {
+                String json=stringBuilder.toString();
+                Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-            return namesAndIp;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        return namesAndIp;
     }
 }

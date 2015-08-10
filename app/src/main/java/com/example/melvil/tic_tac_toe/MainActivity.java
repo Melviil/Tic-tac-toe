@@ -7,10 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import java.io.Serializable;
 
 
 public class MainActivity extends Activity {
@@ -18,6 +15,7 @@ public class MainActivity extends Activity {
     ImageButton b;
     Button play;
     Boolean choice;
+    Button multilayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +24,15 @@ public class MainActivity extends Activity {
         et = (EditText) findViewById(R.id.editText);
         b = (ImageButton) findViewById(R.id.drapeau);
         play = (Button) findViewById(R.id.play);
+        multilayer = (Button) findViewById(R.id.multi);
         choice = true;
+        multilayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ListPlayersActivity.class);
+                startActivity(intent);
+            }
+        });
         play.setOnClickListener(new View.OnClickListener() {
 
             @Override

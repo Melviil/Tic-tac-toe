@@ -51,7 +51,7 @@
         android:layout_height="100dp"
         android:text="Play"
         android:id="@+id/play"
-        android:layout_below="@+id/drapeau"
+        android:layout_above="@+id/multi"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -62,13 +62,14 @@
         android:id="@+id/editText"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
-    <LinearLayout
-        android:id="@+id/LinearLayout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Multiplayer"
+        android:id="@+id/multi"
+        android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></LinearLayout>
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
