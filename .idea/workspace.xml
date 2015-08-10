@@ -23,6 +23,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0c8e80f4-a653-4264-885a-bdbb47a4bc74" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/TaskGetNamesAndIps.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
@@ -31,6 +32,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/ListPlayersActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/ListPlayersActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/Service_ConnectToDB.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/Service_ConnectToDB.java" />
 =======
+=======
+>>>>>>> origin/master
       <change type="DELETED" beforePath="D:\Applikace\Tic-tac-toe\.idea\libraries\appcompat_v7_22_2_1.xml" afterPath="" />
       <change type="DELETED" beforePath="D:\Applikace\Tic-tac-toe\.idea\libraries\support_annotations_22_2_1.xml" afterPath="" />
       <change type="DELETED" beforePath="D:\Applikace\Tic-tac-toe\.idea\libraries\support_v4_22_2_1.xml" afterPath="" />
@@ -49,7 +52,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TicTacToe.iws" />
@@ -82,7 +88,10 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/GameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
             <state vertical-scroll-proportion="0.4754991">
               <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
               <folding>
@@ -121,12 +130,16 @@
 =======
                 <element signature="e#1371#1372#0" expanded="true" />
                 <element signature="e#1408#1409#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="TaskGetNamesAndIps.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/TaskGetNamesAndIps.java">
@@ -139,6 +152,8 @@
                 <element signature="e#2062#2063#0" expanded="true" />
               </folding>
 =======
+=======
+>>>>>>> origin/master
       <file leaf-file-name="getNamesandIP.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/php/getNamesandIP.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -155,7 +170,10 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
@@ -1587,10 +1605,13 @@
     </navigator>
     <panes>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="Scope" />
 =======
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -1604,7 +1625,10 @@
       </pane>
       <pane id="ProjectPane" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
       <pane id="Scratches" />
       <pane id="Scope" />
 >>>>>>> a605075... Added checkForCompleted()
@@ -1849,16 +1873,21 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32795697" sideWeight="0.39701173" order="7" side_tool="true" content_ui="tabs" />
 =======
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33104238" sideWeight="0.5149733" order="7" side_tool="true" content_ui="tabs" />
 >>>>>>> a605075... Added checkForCompleted()
+=======
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33104238" sideWeight="0.5149733" order="7" side_tool="true" content_ui="tabs" />
+>>>>>>> origin/master
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.4850587" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32795697" sideWeight="0.60298824" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1870,6 +1899,12 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24705882" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
 >>>>>>> a605075... Added checkForCompleted()
+=======
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33104238" sideWeight="0.48502675" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24705882" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> origin/master
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1905,7 +1940,10 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1944,7 +1982,10 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_listplayers.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2037,7 +2078,10 @@
 =======
             <element signature="e#1371#1372#0" expanded="true" />
             <element signature="e#1408#1409#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -2137,7 +2181,10 @@
 =======
             <element signature="e#1371#1372#0" expanded="true" />
             <element signature="e#1408#1409#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -2237,7 +2284,10 @@
 =======
             <element signature="e#1371#1372#0" expanded="true" />
             <element signature="e#1408#1409#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -2301,7 +2351,10 @@
 =======
             <element signature="e#1371#1372#0" expanded="true" />
             <element signature="e#1408#1409#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -2348,12 +2401,27 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+<<<<<<< HEAD
+=======
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_listplayers.xml">
+>>>>>>> origin/master
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+<<<<<<< HEAD
 <<<<<<< HEAD
     </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/sources/android-22/android/content/Intent.java">
@@ -2431,6 +2499,10 @@
       <provider selected="true" editor-type-id="android-designer">
         <state />
 >>>>>>> a605075... Added checkForCompleted()
+=======
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+>>>>>>> origin/master
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/GameActivity.java">
@@ -2453,7 +2525,10 @@
 =======
             <element signature="e#1371#1372#0" expanded="true" />
             <element signature="e#1408#1409#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> a605075... Added checkForCompleted()
+=======
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -2461,6 +2536,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/Service_ConnectToDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
@@ -2473,15 +2549,28 @@
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
 >>>>>>> a605075... Added checkForCompleted()
+=======
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/melvil/tic_tac_toe/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding />
+=======
+        <state vertical-scroll-proportion="0.4754991">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+          <folding>
+            <element signature="e#1216#1728#0" expanded="true" />
+            <element signature="e#1727#1728#0" expanded="true" />
+          </folding>
+>>>>>>> origin/master
         </state>
       </provider>
     </entry>
