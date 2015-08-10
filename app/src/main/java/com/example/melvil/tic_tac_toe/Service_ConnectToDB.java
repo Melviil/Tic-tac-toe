@@ -2,22 +2,17 @@ package com.example.melvil.tic_tac_toe;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by samuel on 08/08/15.
@@ -28,14 +23,20 @@ public class Service_ConnectToDB extends Service {
     URL removeLinesOnGames;
     URL getNamesAndIP;
     URL addLineOnGames;
+    ProgressBar progressBar;
 
     public Service_ConnectToDB() {
+    }
+
+    public void setProgressBar(ProgressBar progressBar) {
+        this.progressBar = progressBar;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
         try {
+            //URL to obtain Json object that contains names and ips
             this.getNamesAndIP = new URL("http://abbaye.noip.me/Android/getNamesandIP.php");
             this.addLineOnGames = new URL("http://abbaye.noip.me/Android/addLineOnGames.php");
             this.removeLinesOnGames = new URL("http://abbaye.noip.me/Android/removeLineOnGames.php");
@@ -53,39 +54,27 @@ public class Service_ConnectToDB extends Service {
 
     /**
      * Method who returns a Map of players and connectb to the webService
+     *
      * @return Map<String,URL> who contains all players able to play
      */
     public Map<String, URL> getNamesAndIp() {
-        //TODO Need to receive Database inforamtion for the listview -> Coreect this méthod
-        AsyncTask task = new AsyncTask() {
-            @Override
-            protected Object doInBackground(Object[] params) {
-                HttpClient client = new DefaultHttpClient();
-                HttpGet request = new HttpGet();
-                HttpResponse response = null;
-                try {
-                    request.setURI(getNamesAndIP.toURI());
-                } catch (URISyntaxException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    response = client.execute(request);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                if (response != null) {
-                    try {
-                        BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                return null;
-            }
-
-        };
-
+        JSONObject jsonObject = null;
+        try {
+            TaskGetNamesAndIps task = new TaskGetNamesAndIps();
+            task.setProgressBar(progressBar);
+            task.execute(getNamesAndIP);
+            task.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        //  Toast.makeText(getApplicationContext(),jsonObject.toString(),Toast.LENGTH_LONG);
         return null;
+    }
+
+    public void test(JSONObject jsonObject) {
+        Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
     }
 
     public class MyBinder extends Binder {

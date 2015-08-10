@@ -41,14 +41,21 @@ public class ListPlayersActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listplayers);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setIndeterminate(false);
+        progressBar.setProgress(0);
+        progressBar.setMax(4);
+
         listView = (ListView) findViewById(R.id.listView);
         progressBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Hey", Toast.LENGTH_LONG).show();
+                service_connectToDB.setProgressBar(progressBar);
                 service_connectToDB.getNamesAndIp();
+
             }
         });
+
     }
 
     @Override
