@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class Service_ConnectToDB extends Service {
                         stringBuilder.append((char) cp);
                     }
                     String json=stringBuilder.toString();
+                    Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
