@@ -2,18 +2,39 @@
 <items version="2" >
 
     <item
+        jar="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-1eb9ca8a14783cd0a67165d11b1364bdc393379e.jar" />
+    </item>
+    <item
+        jar="/Users/Melvil/AndroidStudioProjects/Tic-tac-toe-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-tac-toe-master/app/build/intermediates/pre-dexed/debug/classes-3a8730076dd166360b97d2fd933413cc2a283db4.jar" />
+    </item>
+    <item
+        jar="/Users/Melvil/AndroidStudioProjects/Tic-tac-toe-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-tac-toe-master/app/build/intermediates/pre-dexed/debug/classes-901747b7d86757935c1eb3a5b17756518c47d8e9.jar" />
+    </item>
+    <item
+        jar="/Users/Melvil/AndroidStudioProjects/Tic-tac-toe-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-tac-toe-master/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-903e5dac33245e2c9355e20a0810c6a20b296cfe.jar" />
+    </item>
+    <item
         jar="/Users/Melvil/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
         jumboMode="false"
         revision="23.0.0 rc3"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
         <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-29e246d7100739ccb97071d45729fd482c0a4e2d.jar" />
-    </item>
-    <item
-        jar="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/pre-dexed/debug/classes-939a34e914666fbd69fe78334e28834c65afc3ce.jar" />
     </item>
     <item
         jar="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
@@ -23,11 +44,11 @@
         <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/pre-dexed/debug/classes-91d14412158859bc47d03d2260a73365891c4ee9.jar" />
     </item>
     <item
-        jar="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jar="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.0 rc3"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-1eb9ca8a14783cd0a67165d11b1364bdc393379e.jar" />
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="/Users/Melvil/AndroidStudioProjects/Tic-Tac-Toe/app/build/intermediates/pre-dexed/debug/classes-939a34e914666fbd69fe78334e28834c65afc3ce.jar" />
     </item>
 
 </items>

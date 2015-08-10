@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.io.Serializable;
 
 
 public class MainActivity extends Activity {
+   public EditText et;
     ImageButton b;
-    LinearLayout Ll;
     Button play;
     Boolean choice;
 
@@ -19,6 +23,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        et = (EditText) findViewById(R.id.editText);
         b = (ImageButton) findViewById(R.id.drapeau);
         play = (Button) findViewById(R.id.play);
         choice = true;
@@ -26,11 +31,18 @@ public class MainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                startActivity(intent);
+                if (et.getText().toString().trim().length() == 0) {
+                    Toast.makeText(getApplicationContext(), "Aucun nom n'a été rentré", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                    intent.putExtra("et", (Serializable) et);
+                    startActivity(intent);
+
+                    String str = (String) getIntent().getSerializableExtra("et");
+
+                }
             }
         });
-
 
         b.setOnClickListener(new View.OnClickListener() {
 
@@ -45,5 +57,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-    }
-}
+    }}
+
+
