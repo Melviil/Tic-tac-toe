@@ -23,11 +23,11 @@ public class ListPlayersActivity extends Activity {
     Service_ConnectToDB service_connectToDB;
     ProgressBar progressBar;
     ListView listView;
-    Map<String,URL> players;
+    Map<String, URL> players;
     ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-           service_connectToDB = ((Service_ConnectToDB.MyBinder)service).getMyService();
+            service_connectToDB = ((Service_ConnectToDB.MyBinder) service).getMyService();
         }
 
         @Override
@@ -35,6 +35,7 @@ public class ListPlayersActivity extends Activity {
             service_connectToDB = null;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,21 +45,16 @@ public class ListPlayersActivity extends Activity {
         progressBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Hey",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Hey", Toast.LENGTH_LONG).show();
                 service_connectToDB.getNamesAndIp();
             }
         });
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
-        Intent i = new Intent(getApplicationContext(),Service_ConnectToDB.class);
+        Intent i = new Intent(getApplicationContext(), Service_ConnectToDB.class);
         bindService(i, serviceConnection, BIND_AUTO_CREATE);
     }
 }

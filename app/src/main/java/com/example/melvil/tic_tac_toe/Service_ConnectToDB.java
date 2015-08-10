@@ -50,6 +50,11 @@ public class Service_ConnectToDB extends Service {
     }
 
     //TODO verify this code
+
+    /**
+     * Method who returns a Map of players and connectb to the webService
+     * @return Map<String,URL> who contains all players able to play
+     */
     public Map<String, URL> getNamesAndIp() {
         //TODO Need to receive Database inforamtion for the listview -> Coreect this méthod
         AsyncTask task = new AsyncTask() {

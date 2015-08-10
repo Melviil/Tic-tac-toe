@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
-   public EditText et;
+    public EditText et;
     ImageButton b;
     Button play;
     Boolean choice;
@@ -26,10 +26,13 @@ public class MainActivity extends Activity {
         play = (Button) findViewById(R.id.play);
         multilayer = (Button) findViewById(R.id.multi);
         choice = true;
+        /*
+        Clic listener for the multiplayer button, starts an Intent of ListPLayersActivity
+         */
         multilayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ListPlayersActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
                 startActivity(intent);
             }
         });
@@ -59,6 +62,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
-    }}
+    }
+}
 
 
