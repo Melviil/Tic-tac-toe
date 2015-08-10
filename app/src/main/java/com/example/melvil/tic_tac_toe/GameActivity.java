@@ -2,6 +2,7 @@ package com.example.melvil.tic_tac_toe;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -43,10 +44,34 @@ public class GameActivity extends Activity {
                             var = "o";
                         }
                         b.setText(var);
+                        checkForCompleted("x");
+                        checkForCompleted("o");
                     }
                 });
             }
         }
+    }
+
+    private boolean checkForCompleted(String symbol){
+        if (buttons[0][0].getText() == symbol && buttons[1][1].getText() == symbol && buttons[2][2].getText() == symbol){
+            Log.v("GameActivity", "checkForCompleted: completed in cross - " + symbol);
+            return true;
+        }
+        if (buttons[0][2].getText() == symbol && buttons[1][1].getText() == symbol && buttons[2][0].getText() == symbol){
+            Log.v("GameActivity","checkForCompleted: completed in cross - "+symbol);
+            return true;
+        }
+        for (i = 0; i < 3; i++) {
+            if (buttons[i][0].getText() == symbol && buttons[i][1].getText() == symbol && buttons[i][2].getText() == symbol){
+                Log.v("GameActivity","checkForCompleted: completed in row - "+symbol);
+                return true;
+            }
+            if (buttons[0][i].getText() == symbol && buttons[1][i].getText() == symbol && buttons[2][i].getText() == symbol){
+                Log.v("GameActivity","checkForCompleted: completed in column - "+symbol);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
