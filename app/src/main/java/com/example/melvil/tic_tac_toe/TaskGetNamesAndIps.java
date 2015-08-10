@@ -2,10 +2,9 @@ package com.example.melvil.tic_tac_toe;
 
 import android.os.AsyncTask;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,12 +16,13 @@ import java.net.URL;
 /**
  * Created by samuel on 10/08/15.
  */
-public class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONObject> {
+public class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
     ProgressBar progressBar;
+
     @Override
-    protected void onPostExecute(JSONObject jsonObject) {
+    protected void onPostExecute(JSONArray jsonArray) {
         progressBar.setProgress(4);
-        super.onPostExecute(jsonObject);
+        super.onPostExecute(jsonArray);
     }
 
     @Override
@@ -32,33 +32,31 @@ public class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONObject> {
     }
 
     @Override
-    protected JSONObject doInBackground(URL... params) {
-
-        JSONObject jsonObject = null;
+    protected JSONArray doInBackground(URL... params) {
+        JSONArray jsonArray = null;
         try {
             HttpURLConnection connection = (HttpURLConnection) params[0].openConnection();
             int responseCode = connection.getResponseCode();
-            publishProgress(1);
+            publishProgress(20);
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 InputStream in = connection.getInputStream();
                 BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
                 StringBuilder responseStrBuilder = new StringBuilder();
-                publishProgress(2);
+                publishProgress(40);
                 String inputStr;
                 while ((inputStr = streamReader.readLine()) != null) {
                     responseStrBuilder.append(inputStr);
                 }
-                jsonObject = new JSONObject(responseStrBuilder.toString());
+                jsonArray = new JSONArray(responseStrBuilder.toString());
             }
-            publishProgress(3);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+            publishProgress(60);
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return jsonObject;
+        return jsonArray;
     }
-    public void setProgressBar(ProgressBar progressBar){
+
+    public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
     }
 }

@@ -2,15 +2,22 @@ package com.example.melvil.tic_tac_toe;
 
 import android.app.Service;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -19,7 +26,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class Service_ConnectToDB extends Service {
     //TODO Finish this class
-    Map<String, URL> namesAndIp;
+    Map<String, URI> namesAndIp;
     URL removeLinesOnGames;
     URL getNamesAndIP;
     URL addLineOnGames;
@@ -43,6 +50,7 @@ public class Service_ConnectToDB extends Service {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        namesAndIp = new HashMap<>();
     }
 
     @Override
@@ -53,28 +61,33 @@ public class Service_ConnectToDB extends Service {
     //TODO verify this code
 
     /**
-     * Method who returns a Map of players and connectb to the webService
+     * Method who returns a Map of players connected to the webService
      *
      * @return Map<String,URL> who contains all players able to play
      */
-    public Map<String, URL> getNamesAndIp() {
-        JSONObject jsonObject = null;
+    public Map<String, URI> getNamesAndIp() {
+        JSONArray jsonArray = null;
         try {
             TaskGetNamesAndIps task = new TaskGetNamesAndIps();
             task.setProgressBar(progressBar);
             task.execute(getNamesAndIP);
-            task.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+            jsonArray = task.get();
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        //  Toast.makeText(getApplicationContext(),jsonObject.toString(),Toast.LENGTH_LONG);
-        return null;
-    }
-
-    public void test(JSONObject jsonObject) {
-        Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+        int index = 0;
+        JSONObject jsonObject;
+        assert jsonArray != null;
+        while (!jsonArray.isNull(index)) {
+            try {
+                jsonObject = jsonArray.getJSONObject(index);
+                namesAndIp.put(jsonObject.getString("name"), new URI(jsonObject.getString("IP")));
+            } catch (JSONException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+            index++;
+        }
+        return namesAndIp;
     }
 
     public class MyBinder extends Binder {
