@@ -2,7 +2,7 @@ package com.example.melvil.tic_tac_toe;
 
 import android.app.Service;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
 import android.widget.ProgressBar;
@@ -11,8 +11,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.Inet4Address;
-import java.net.InetAddress;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -22,6 +25,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 /**
+ * Service who is the intermediate between all the Async actions
  * Created by samuel on 08/08/15.
  */
 public class Service_ConnectToDB extends Service {
@@ -58,12 +62,10 @@ public class Service_ConnectToDB extends Service {
         return new MyBinder();
     }
 
-    //TODO verify this code
-
     /**
      * Method who returns a Map of players connected to the webService
      *
-     * @return Map<String,URL> who contains all players able to play
+     * @return Map<String URL> who contains all players able to play
      */
     public Map<String, URI> getNamesAndIp() {
         JSONArray jsonArray = null;
@@ -81,7 +83,7 @@ public class Service_ConnectToDB extends Service {
         while (!jsonArray.isNull(index)) {
             try {
                 jsonObject = jsonArray.getJSONObject(index);
-                namesAndIp.put(jsonObject.getString("name"), new URI(jsonObject.getString("IP")));
+                namesAndIp.put(jsonObject.getString("idPlayers") + " " + jsonObject.getString("name"), new URI(jsonObject.getString("IP")));
             } catch (JSONException | URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -90,9 +92,89 @@ public class Service_ConnectToDB extends Service {
         return namesAndIp;
     }
 
+    public void addLineOnGame(String name) {
+        TaskAddLineOnGames task = new TaskAddLineOnGames();
+    }
+
+    public void rmeoveLineOngame(int id) {
+
+    }
+
     public class MyBinder extends Binder {
         public Service_ConnectToDB getMyService() {
             return Service_ConnectToDB.this;
         }
+    }
+}
+
+/**
+ * Created by samuel on 10/08/15.
+ */
+class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
+    ProgressBar progressBar;
+
+    @Override
+    protected void onPostExecute(JSONArray jsonArray) {
+        progressBar.setProgress(4);
+        super.onPostExecute(jsonArray);
+    }
+
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        super.onProgressUpdate(values);
+        progressBar.setProgress(values[0]);
+    }
+
+    @Override
+    protected JSONArray doInBackground(URL... params) {
+        JSONArray jsonArray = null;
+        try {
+            HttpURLConnection connection = (HttpURLConnection) params[0].openConnection();
+            int responseCode = connection.getResponseCode();
+            publishProgress(20);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                InputStream in = connection.getInputStream();
+                BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+                StringBuilder responseStrBuilder = new StringBuilder();
+                publishProgress(40);
+                String inputStr;
+                while ((inputStr = streamReader.readLine()) != null) {
+                    responseStrBuilder.append(inputStr);
+                }
+                jsonArray = new JSONArray(responseStrBuilder.toString());
+                connection.disconnect();
+            }
+            publishProgress(60);
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
+    }
+
+    public void setProgressBar(ProgressBar progressBar) {
+        this.progressBar = progressBar;
+    }
+}
+
+/**
+ * Class who can add lines on the DB
+ * Created by samuel on 10/08/15.
+ */
+//TODO Complete this class
+class TaskAddLineOnGames extends AsyncTask<String, Integer, Boolean> {
+    @Override
+    protected Boolean doInBackground(String... params) {
+        return null;
+    }
+}
+
+/**
+ * Class who can remove lines on the DB
+ */
+//TODO Complete this class
+class TaskRemoveLineOnGames extends AsyncTask<Integer, Integer, Boolean> {
+    @Override
+    protected Boolean doInBackground(Integer... params) {
+        return null;
     }
 }

@@ -27,23 +27,29 @@ public class MainActivity extends Activity {
         multilayer = (Button) findViewById(R.id.multi);
         choice = true;
         /*
-        Clic listener for the multiplayer button, starts an Intent of ListPLayersActivity
+        Click listener for the multiplayer button, starts an Intent of ListPLayersActivity
          */
         multilayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
-                startActivity(intent);
+                if (et.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "No name was inserted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
+                    intent.putExtra("name",et.getText().toString());
+                    startActivity(intent);
+                }
             }
         });
         play.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (et.getText().toString().trim().length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Aucun nom n'a été rentré", Toast.LENGTH_SHORT).show();
+                if (et.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "No name was inserted", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                    intent.putExtra("name",et.getText().toString());
                     startActivity(intent);
                 }
             }

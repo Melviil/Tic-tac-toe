@@ -11,6 +11,7 @@ import android.widget.Button;
  */
 public class GameActivity extends Activity {
     Button[][] buttons;
+    String name;
     String var;
     int i;
     int j;
@@ -19,6 +20,7 @@ public class GameActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        name = getIntent().getExtras().getString("name");
         buttons = new Button[3][3];
         buttons[0][0] = (Button) findViewById(R.id.button1);
         buttons[0][1] = (Button) findViewById(R.id.button2);
