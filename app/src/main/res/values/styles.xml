@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="dialog_button" parent="Widget.AppCompat.Button.Small">
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
 </resources>
