@@ -8,6 +8,7 @@ import android.os.IBinder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -41,7 +42,7 @@ public class Service_ConnectToDB extends Service {
         //TODO verify this code
         public Map<String, URL> getNamesAndIp() {
             try {
-                URLConnection urlConnection = abbaye.openConnection();
+                HttpURLConnection urlConnection = (HttpURLConnection)abbaye.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                 StringBuilder stringBuilder = new StringBuilder();
                 int cp;
