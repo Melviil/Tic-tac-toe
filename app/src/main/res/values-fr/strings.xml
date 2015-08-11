@@ -7,6 +7,7 @@
     <string name="your_name">What\'s your name?</string>
     <string name="Play_offline">jouer offline jeu</string>
     <string name="Play_online">Play online multiplayer</string>
+    <string name="no_name">No name was inserted</string>
 
     <string name="Player">Joueur</string>
     <string name="just_won">just won!</string>

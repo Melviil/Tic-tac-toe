@@ -7,6 +7,7 @@
     <string name="your_name">Jaké je vaše jméno?</string>
     <string name="Play_offline">Hrej offline hru</string>
     <string name="Play_online">Hrej online multiplayer</string>
+    <string name="no_name">Žádné jméno nebylo zadáno!</string>
 
     <string name="Player">Hráč</string>
     <string name="just_won">právě vyhrál!</string>
