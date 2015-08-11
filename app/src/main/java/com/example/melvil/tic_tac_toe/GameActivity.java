@@ -101,12 +101,22 @@ public class GameActivity extends Activity {
         if(team == "o") image.setImageResource(R.drawable.rond);
         if(team == "x") image.setImageResource(R.drawable.croix);
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonAgain);
+        Button dialogButtonMenu = (Button) dialog.findViewById(R.id.dialogButtonMenu);
+        Button dialogButtonAgain = (Button) dialog.findViewById(R.id.dialogButtonAgain);
         // if button is clicked, close the custom dialog
-        dialogButton.setOnClickListener(new View.OnClickListener() {
+        dialogButtonMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                finish();
+            }
+        });
+        dialogButtonAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                finish();
+                startActivity(getIntent());
             }
         });
 
