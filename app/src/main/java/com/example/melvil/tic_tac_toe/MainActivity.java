@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
                     Toast.makeText(getApplicationContext(), no_name, Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
-                    intent.putExtra("name",et.getText().toString());
+                    intent.putExtra("name", et.getText().toString());
                     startActivity(intent);
                 }
             }
@@ -51,18 +51,10 @@ public class MainActivity extends Activity {
                     Toast.makeText(getApplicationContext(), no_name, Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
-<<<<<<< Updated upstream
-                    intent.putExtra("name",et.getText().toString());
+                    intent.putExtra("name", et.getText().toString());
                     startActivity(intent);
-=======
-                   // intent.putExtra("et", et);
-                    startActivity(intent);
-                    Intent intent1 = new Intent(getApplicationContext(),ListPlayersActivity.class);
-                    startActivity(intent1);
-
                     String str = (String) getIntent().getSerializableExtra("et");
 
->>>>>>> Stashed changes
                 }
             }
         });
@@ -81,10 +73,7 @@ public class MainActivity extends Activity {
             }
         });
     }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 }
 
 

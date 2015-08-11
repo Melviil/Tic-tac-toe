@@ -6,20 +6,16 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-<<<<<<< Updated upstream
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
-=======
->>>>>>> Stashed changes
+
 
 /**
  * Class who list the player waiting for a challenger
@@ -27,23 +23,16 @@ import java.util.Map;
  */
 public class ListPlayersActivity extends Activity {
     Service_ConnectToDB service_connectToDB;
-<<<<<<< Updated upstream
     String name;
     ProgressBar progressBar;
     ListView listView;
     ArrayAdapter<String> adapter;
-    Map<String, URI> players;
+    Map<Integer, String> players;
     Button create;
     ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             service_connectToDB = ((Service_ConnectToDB.MyBinder) service).getMyService();
-=======
-    ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-           service_connectToDB = ((Service_ConnectToDB.MyBinder)service).getMyservice();
->>>>>>> Stashed changes
         }
 
         @Override
@@ -51,10 +40,7 @@ public class ListPlayersActivity extends Activity {
             service_connectToDB = null;
         }
     };
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,21 +58,17 @@ public class ListPlayersActivity extends Activity {
         progressBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                service_connectToDB.setProgressBar(progressBar);
                 players = service_connectToDB.getNamesAndIp();
                 adapter.clear();
-                adapter.addAll(players.keySet().toArray(new String[players.size()]));
+                adapter.addAll(players.values());
                 adapter.notifyDataSetInvalidated();
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String line = adapter.getItem(position);
-                String chars = String.valueOf(line.charAt(0));
-                chars =  chars + String.valueOf(line.charAt(1));
-                Integer iD = Integer.parseInt(chars);
-                service_connectToDB.removeLineOnGame(iD);
+                //TODO Compltete this.
+
             }
         });
         create.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +76,7 @@ public class ListPlayersActivity extends Activity {
             public void onClick(View v) {
                 service_connectToDB.addLineOnGame(name);
                 Intent intent = new Intent(getApplicationContext(), WaitingForPlayerActivity.class);
-                intent.putExtra("name",name);
+                intent.putExtra("name", name);
                 startActivity(intent);
             }
         });
@@ -105,15 +87,15 @@ public class ListPlayersActivity extends Activity {
         super.onResume();
         Intent i = new Intent(getApplicationContext(), Service_ConnectToDB.class);
         bindService(i, serviceConnection, BIND_AUTO_CREATE);
+
+    }
+    public static Integer getKeyFromValue(Map<Integer,String> hm, Object value) {
+        for (Integer o : hm.keySet()) {
+            if (hm.get(o).equals(value)) {
+                return o;
+            }
+        }
+        return null;
     }
 
-<<<<<<< Updated upstream
-=======
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Intent i = new Intent(getApplicationContext(),Service_ConnectToDB.class);
-        bindService(i,serviceConnection,BIND_AUTO_CREATE);
-    }
->>>>>>> Stashed changes
 }

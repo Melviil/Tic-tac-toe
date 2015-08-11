@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context=".ListPlayersActivity"
-    android:background="@android:color/background_dark">
+    android:background="@drawable/background">
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
@@ -22,7 +22,7 @@
         android:id="@+id/listView"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/progressBar"
-        android:background="@android:color/background_dark" />
+        android:background="#00ffffff" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -33,7 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@android:color/darker_gray" />
+        android:background="#00ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/create"
-        android:background="@android:color/background_dark"
+        android:background="#64fdfbff"
         android:textColor="#ffffff" />
 
 </RelativeLayout>

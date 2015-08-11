@@ -8,10 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Melvil on 07/08/15.
@@ -65,74 +61,58 @@ public class GameActivity extends Activity {
         }
     }
 
-    private boolean checkForCompleted(String symbol){
-        if (buttons[0][0].getTag() == symbol && buttons[1][1].getTag() == symbol && buttons[2][2].getTag() == symbol){
+    private boolean checkForCompleted(String symbol) {
+        if (buttons[0][0].getTag() == symbol && buttons[1][1].getTag() == symbol && buttons[2][2].getTag() == symbol) {
             Log.v("GameActivity", "checkForCompleted: completed in cross - " + symbol);
             return true;
         }
-        if (buttons[0][2].getTag() == symbol && buttons[1][1].getTag() == symbol && buttons[2][0].getTag() == symbol){
-            Log.v("GameActivity","checkForCompleted: completed in cross - "+symbol);
+        if (buttons[0][2].getTag() == symbol && buttons[1][1].getTag() == symbol && buttons[2][0].getTag() == symbol) {
+            Log.v("GameActivity", "checkForCompleted: completed in cross - " + symbol);
             return true;
         }
         for (i = 0; i < 3; i++) {
-            if (buttons[i][0].getTag() == symbol && buttons[i][1].getTag() == symbol && buttons[i][2].getTag() == symbol){
-                Log.v("GameActivity","checkForCompleted: completed in row - "+symbol);
+            if (buttons[i][0].getTag() == symbol && buttons[i][1].getTag() == symbol && buttons[i][2].getTag() == symbol) {
+                Log.v("GameActivity", "checkForCompleted: completed in row - " + symbol);
                 return true;
             }
-            if (buttons[0][i].getTag() == symbol && buttons[1][i].getTag() == symbol && buttons[2][i].getTag() == symbol){
-                Log.v("GameActivity","checkForCompleted: completed in column - "+symbol);
+            if (buttons[0][i].getTag() == symbol && buttons[1][i].getTag() == symbol && buttons[2][i].getTag() == symbol) {
+                Log.v("GameActivity", "checkForCompleted: completed in column - " + symbol);
                 return true;
             }
         }
         return false;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private void showDialog(){
-=======
-    private void showDialog(String team){
+
+    private void showDialog(String team) {
         String Player = getResources().getString(R.string.Player);
         String just_won = getResources().getString(R.string.just_won);
->>>>>>> 949bf5f... Language automatic support
-=======
-    private void showDialog(String team){
-        String Player = getResources().getString(R.string.Player);
-        String just_won = getResources().getString(R.string.just_won);
->>>>>>> origin/master
-
-
 
 
         // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_gameover);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        dialog.setTitle("You just won!");
-=======
-        dialog.setTitle(Player+" '"+team+"' "+just_won);
->>>>>>> 949bf5f... Language automatic support
-=======
-=======
-
-        dialog.setTitle(Player+" '"+team+"' "+just_won);
 
         dialog.setTitle("You just won!");
 
-        dialog.setTitle(Player+" '"+team+"' "+just_won);
+        dialog.setTitle(Player + " '" + team + "' " + just_won);
 
-        dialog.setTitle(Player+" '"+team+"' "+just_won);
 
->>>>>>> Correct
-        dialog.setTitle(Player+" '"+team+"' "+just_won);
->>>>>>> origin/master
+        dialog.setTitle(Player + " '" + team + "' " + just_won);
+
+        dialog.setTitle("You just won!");
+
+        dialog.setTitle(Player + " '" + team + "' " + just_won);
+
+        dialog.setTitle(Player + " '" + team + "' " + just_won);
+
+
+        dialog.setTitle(Player + " '" + team + "' " + just_won);
 
         // set the custom dialog components - text, image and button
         ImageView image = (ImageView) dialog.findViewById(R.id.image);
-        if(team == "o") image.setImageResource(R.drawable.rond);
-        if(team == "x") image.setImageResource(R.drawable.croix);
+        if (team == "o") image.setImageResource(R.drawable.rond);
+        if (team == "x") image.setImageResource(R.drawable.croix);
 
         Button dialogButtonMenu = (Button) dialog.findViewById(R.id.dialogButtonMenu);
         Button dialogButtonAgain = (Button) dialog.findViewById(R.id.dialogButtonAgain);
