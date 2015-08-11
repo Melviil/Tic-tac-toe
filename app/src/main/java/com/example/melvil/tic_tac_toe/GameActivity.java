@@ -1,10 +1,13 @@
 package com.example.melvil.tic_tac_toe;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by Melvil on 07/08/15.
@@ -46,8 +49,8 @@ public class GameActivity extends Activity {
                             var = "o";
                         }
                         b.setText(var);
-                        checkForCompleted("x");
-                        checkForCompleted("o");
+                        if (checkForCompleted("x")) showDialog();
+                        if (checkForCompleted("o")) showDialog();
                     }
                 });
             }
@@ -74,6 +77,31 @@ public class GameActivity extends Activity {
             }
         }
         return false;
+    }
+
+    private void showDialog(){
+
+        // custom dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_gameover);
+        dialog.setTitle("You just won!");
+
+        // set the custom dialog components - text, image and button
+        //TextView text = (TextView) dialog.findViewById(R.id.text);
+        //text.setText("Android custom dialog example!");
+        ImageView image = (ImageView) dialog.findViewById(R.id.image);
+        image.setImageResource(R.drawable.rond);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonAgain);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
 }
