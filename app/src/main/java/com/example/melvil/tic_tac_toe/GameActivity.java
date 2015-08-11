@@ -101,9 +101,13 @@ public class GameActivity extends Activity {
         String just_won = getResources().getString(R.string.just_won);
 >>>>>>> origin/master
 
+
+
+
         // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_gameover);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         dialog.setTitle("You just won!");
@@ -111,6 +115,17 @@ public class GameActivity extends Activity {
         dialog.setTitle(Player+" '"+team+"' "+just_won);
 >>>>>>> 949bf5f... Language automatic support
 =======
+=======
+
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+
+        dialog.setTitle("You just won!");
+
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+
+>>>>>>> Correct
         dialog.setTitle(Player+" '"+team+"' "+just_won);
 >>>>>>> origin/master
 
