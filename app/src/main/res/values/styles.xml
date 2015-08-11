@@ -10,4 +10,10 @@
         <item name="android:layout_height">48dp</item>
     </style>
 
+    <style name="game_button" parent="Widget.AppCompat.Button">
+        <!--<item name="android:background">#edf2ee</item>-->
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
 </resources>

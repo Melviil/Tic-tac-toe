@@ -2,19 +2,23 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+        jar="D:\Applikace\Tic-tac-toe\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+=======
+        jar="C:\Users\David\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+>>>>>>> origin/master
+        jumboMode="false"
+        revision="23.0.0 rc3"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="D:\Applikace\Tic-tac-toe\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-33277c8754d5dac19b6cd89732b26a608a911ccb.jar" />
+    </item>
+    <item
         jar="D:\Applikace\Tic-tac-toe\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.0 rc3"
         sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
         <dex dex="D:\Applikace\Tic-tac-toe\app\build\intermediates\pre-dexed\debug\classes-11c05ec8d9d5353bb2a79bd98c1e87de773fecf7.jar" />
-    </item>
-    <item
-        jar="C:\Users\David\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="23.0.0 rc3"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="D:\Applikace\Tic-tac-toe\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-33277c8754d5dac19b6cd89732b26a608a911ccb.jar" />
     </item>
     <item
         jar="D:\Applikace\Tic-tac-toe\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"

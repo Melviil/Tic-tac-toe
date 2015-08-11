@@ -94,26 +94,29 @@
             android:paddingLeft="40dp"
             android:paddingTop="100dp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp" />
+                android:width="100dp"
+                style="@style/game_button"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp" />
+                android:width="100dp"
+                style="@style/game_button"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp"/>
+                android:width="100dp"
+                style="@style/game_button"/>
         </TableRow>
 
         <TableRow
@@ -122,45 +125,54 @@
             android:layout_height="wrap_content"
             android:paddingLeft="40dp">
 
-            <Button
+            <ImageButton
                 android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp" />
+                android:width="100dp"
+                style="@style/game_button"
+                />
 
-            <Button
+            <ImageButton
                 android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp" />
-            <Button
+                android:width="100dp"
+                style="@style/game_button"/>
+
+            <ImageButton
                 android:id="@+id/button6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp"/>
+                android:width="100dp"
+                style="@style/game_button"/>
         </TableRow>
+
         <TableRow android:paddingLeft="40dp">
-            <Button
+            <ImageButton
                 android:id="@+id/button7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp" />
-            <Button
+                android:width="100dp"
+                style="@style/game_button"/>
+            <ImageButton
                 android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp" />
-            <Button
+                android:width="100dp"
+                style="@style/game_button"/>
+            <ImageButton
                 android:id="@+id/button9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:height="100dp"
-                android:width="100dp"/>
+                android:width="100dp"
+                style="@style/game_button"/>
         </TableRow>
     </TableLayout>
 
