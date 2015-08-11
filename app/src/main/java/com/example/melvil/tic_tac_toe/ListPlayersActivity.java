@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -48,26 +49,26 @@ public class ListPlayersActivity extends Activity {
         name = getIntent().getExtras().getString("name");
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         create = (Button) findViewById(R.id.create);
-        progressBar.setIndeterminate(false);
+        adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, android.R.id.text1);
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
         progressBar.setProgress(0);
         progressBar.setMax(100);
-        listView = (ListView) findViewById(R.id.listView);
+
 
         progressBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Hey", Toast.LENGTH_LONG).show();
                 service_connectToDB.setProgressBar(progressBar);
                 players = service_connectToDB.getNamesAndIp();
-                adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, android.R.id.text1, players.keySet().toArray(new String[players.size()]));
-                listView.setAdapter(adapter);
-                adapter.setNotifyOnChange(true);
+                adapter.clear();
+                adapter.addAll(players.keySet().toArray(new String[players.size()]));
+                adapter.notifyDataSetInvalidated();
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplication(), players.get(adapter.getItem(position)).toString(), Toast.LENGTH_LONG).show();
                 String line = adapter.getItem(position);
                 String chars = String.valueOf(line.charAt(0));
                 chars =  chars + String.valueOf(line.charAt(1));
@@ -80,6 +81,7 @@ public class ListPlayersActivity extends Activity {
             public void onClick(View v) {
                 service_connectToDB.addLineOnGame(name);
                 Intent intent = new Intent(getApplicationContext(), WaitingForPlayerActivity.class);
+                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ public class Service_ConnectToDB extends Service {
     URL getNamesAndIP;
     URL addLineOnGames;
     ProgressBar progressBar;
+    ArrayAdapter<String> adapter;
+
 
     public Service_ConnectToDB() {
     }
@@ -67,48 +70,54 @@ public class Service_ConnectToDB extends Service {
     /**
      * Method who returns a Map of players connected to the webService
      *
-     * @return Map<String URL> who contains all players able to play
+     * @return Map<StringURL> who contains all players able to play
      */
     public Map<String, URI> getNamesAndIp() {
         JSONArray jsonArray = null;
+        TaskGetNamesAndIps taskGetNamesAndIps;
         try {
-            TaskGetNamesAndIps task = new TaskGetNamesAndIps();
-            task.setProgressBar(progressBar);
-            task.execute(getNamesAndIP);
-            jsonArray = task.get();
+            taskGetNamesAndIps = new TaskGetNamesAndIps();
+            taskGetNamesAndIps.setProgressBar(progressBar);
+            taskGetNamesAndIps.execute(getNamesAndIP);
+            jsonArray = taskGetNamesAndIps.get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
         int index = 0;
         JSONObject jsonObject;
-        assert jsonArray != null;
-        while (!jsonArray.isNull(index)) {
-            try {
-                jsonObject = jsonArray.getJSONObject(index);
-                namesAndIp.put(jsonObject.getString("idPlayers") + " " + jsonObject.getString("name"), new URI(jsonObject.getString("IP")));
-            } catch (JSONException | URISyntaxException e) {
-                e.printStackTrace();
+        if (jsonArray != null && !jsonArray.isNull(index)) {
+
+            while (!jsonArray.isNull(index)) {
+                try {
+                    jsonObject = jsonArray.getJSONObject(index);
+                    namesAndIp.put(jsonObject.getString("idPlayers") + " " + jsonObject.getString("name"), new URI(jsonObject.getString("IP")));
+                } catch (JSONException | URISyntaxException e) {
+                    e.printStackTrace();
+                }
+                index++;
             }
-            index++;
+
+        } else {
+            Toast.makeText(getApplicationContext(), "Nobody online", Toast.LENGTH_LONG).show();
         }
         return namesAndIp;
     }
 
     public void addLineOnGame(String name) {
-        TaskAddLineOnGames task = new TaskAddLineOnGames();
-        task.execute(addLineOnGames, name);
+        TaskAddLineOnGames taskAddLineOnGames = new TaskAddLineOnGames();
+        taskAddLineOnGames.execute(addLineOnGames, name);
         try {
-            Toast.makeText(getApplicationContext(), task.get().toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), taskAddLineOnGames.get().toString(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
 
     public void removeLineOnGame(Integer id) {
-        TaskRemoveLineOnGames task = new TaskRemoveLineOnGames();
-        task.execute(removeLinesOnGames, id);
+        TaskRemoveLineOnGames taskRemoveLineOnGames = new TaskRemoveLineOnGames();
+        taskRemoveLineOnGames.execute(removeLinesOnGames, id);
         try {
-            Toast.makeText(getApplicationContext(),task.get().toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), taskRemoveLineOnGames.get().toString(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
@@ -158,6 +167,8 @@ class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
                 }
                 jsonArray = new JSONArray(responseStrBuilder.toString());
                 connection.disconnect();
+                in.close();
+                streamReader.close();
             }
             publishProgress(60);
         } catch (IOException | JSONException e) {
@@ -165,6 +176,7 @@ class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
         }
         return jsonArray;
     }
+
 
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
@@ -211,11 +223,7 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
                 response.append(inputLine);
             }
             in.close();
-
-            //print result
-            System.out.println(response.toString());
-
-
+            connection.disconnect();
             finish = true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -231,6 +239,7 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
 class TaskRemoveLineOnGames extends AsyncTask<Object, Integer, Boolean> {
     HttpURLConnection connection;
     URL removeLineWithId;
+
     @Override
     protected Boolean doInBackground(Object... params) {
 
