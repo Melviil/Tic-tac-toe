@@ -23,6 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -178,17 +179,19 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
     Boolean finish =  false;
     @Override
     protected Boolean doInBackground(Object... params) {
-        addLinesIRL = (URL)params[0];
         String name =  (String)params[1];
         parameters = "name="+name;
+        addLinesIRL = (URL)params[0];
+        try {
+            addLinesIRL = new URL(addLinesIRL.toString()+"?"+parameters);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         try {
             HttpURLConnection httpURLConnection = (HttpURLConnection)addLinesIRL.openConnection();
             httpURLConnection.setDoOutput(true);
-            httpURLConnection.setRequestMethod("POST");
-            request = new OutputStreamWriter(httpURLConnection.getOutputStream());
-            request.write(parameters);
-            request.flush();
-            request.close();
+            httpURLConnection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+            httpURLConnection.connect();
             httpURLConnection.disconnect();
             finish = true;
         } catch (IOException e) {
