@@ -6,7 +6,9 @@ import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -94,6 +97,12 @@ public class Service_ConnectToDB extends Service {
 
     public void addLineOnGame(String name) {
         TaskAddLineOnGames task = new TaskAddLineOnGames();
+        task.execute(addLineOnGames,name);
+        try {
+            Toast.makeText(getApplicationContext(),task.get().toString(),Toast.LENGTH_LONG).show();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     public void rmeoveLineOngame(int id) {
@@ -108,6 +117,7 @@ public class Service_ConnectToDB extends Service {
 }
 
 /**
+ * Task who returns the acces to de DB all the names and ip on a JSONArray.
  * Created by samuel on 10/08/15.
  */
 class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
@@ -161,10 +171,30 @@ class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
  * Created by samuel on 10/08/15.
  */
 //TODO Complete this class
-class TaskAddLineOnGames extends AsyncTask<String, Integer, Boolean> {
+class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
+    URL addLinesIRL;
+    String parameters;
+    OutputStreamWriter request=null;
+    Boolean finish =  false;
     @Override
-    protected Boolean doInBackground(String... params) {
-        return null;
+    protected Boolean doInBackground(Object... params) {
+        addLinesIRL = (URL)params[0];
+        String name =  (String)params[1];
+        parameters = "name="+name;
+        try {
+            HttpURLConnection httpURLConnection = (HttpURLConnection)addLinesIRL.openConnection();
+            httpURLConnection.setDoOutput(true);
+            httpURLConnection.setRequestMethod("POST");
+            request = new OutputStreamWriter(httpURLConnection.getOutputStream());
+            request.write(parameters);
+            request.flush();
+            request.close();
+            httpURLConnection.disconnect();
+            finish = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return finish;
     }
 }
 

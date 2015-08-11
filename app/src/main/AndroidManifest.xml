@@ -19,6 +19,7 @@
         <activity android:name=".GameActivity" />
         <activity android:name=".ListPlayersActivity"/>
         <service android:name=".Service_ConnectToDB"/>
+        <activity android:name=".WaitingForPlayerActivity"/>
     </application>
 
 </manifest>
