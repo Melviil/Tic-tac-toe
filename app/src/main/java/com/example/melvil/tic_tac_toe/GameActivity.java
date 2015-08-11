@@ -88,15 +88,15 @@ public class GameActivity extends Activity {
     }
 
     private void showDialog(String team){
+        String Player = getResources().getString(R.string.Player);
+        String just_won = getResources().getString(R.string.just_won);
 
         // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_gameover);
-        dialog.setTitle("Player '"+team+"' just won!");
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
 
         // set the custom dialog components - text, image and button
-        //TextView text = (TextView) dialog.findViewById(R.id.text);
-        //text.setText("Android custom dialog example!");
         ImageView image = (ImageView) dialog.findViewById(R.id.image);
         if(team == "o") image.setImageResource(R.drawable.rond);
         if(team == "x") image.setImageResource(R.drawable.croix);

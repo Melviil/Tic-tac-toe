@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tic-Tac-Toe</string>
+    <string name="app_name">Tic-Tac-Toe (fr)</string>
 
-    <string name="welcome">Welcome to this awesome tic tac toe</string>
+    <string name="welcome">Bienvenue à ce grand jeu tic tac toe</string>
     <string name="your_name">What\'s your name?</string>
-    <string name="Play_offline">Play offline game</string>
+    <string name="Play_offline">jouer offline jeu</string>
     <string name="Play_online">Play online multiplayer</string>
 
-    <string name="Player">Player</string>
+    <string name="Player">Joueur</string>
     <string name="just_won">just won!</string>
     <string name="back_to_menu">BACK TO MENU</string>
     <string name="again_please">NICE, AGAIN PLEASE!</string>

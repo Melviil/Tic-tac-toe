@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tic-Tac-Toe (cz)</string>
+
+    <string name="welcome">Vítejte ve skvělém tic-tac-toe</string>
+    <string name="your_name">Jaké je vaše jméno?</string>
+    <string name="Play_offline">Hrej offline hru</string>
+    <string name="Play_online">Hrej online multiplayer</string>
+
+    <string name="Player">Hráč</string>
+    <string name="just_won">právě vyhrál!</string>
+    <string name="back_to_menu">ZPĚT DO MENU</string>
+    <string name="again_please">PĚKNĚ, ZNOVU PROSÍM!</string>
+
+</resources>

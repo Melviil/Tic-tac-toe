@@ -22,7 +22,7 @@
             android:id="@+id/dialogButtonMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BACK TO MENU"
+            android:text="@string/back_to_menu"
             style="@style/dialog_button"
             />
 
@@ -30,7 +30,7 @@
             android:id="@+id/dialogButtonAgain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NICE, AGAIN PLEASE!"
+            android:text="@string/again_please"
             android:layout_toRightOf="@+id/dialogButtonMenu"
             style="@style/dialog_button"
             />
