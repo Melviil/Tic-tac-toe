@@ -26,6 +26,8 @@ public class MainActivity extends Activity {
         play = (Button) findViewById(R.id.play);
         multilayer = (Button) findViewById(R.id.multi);
         choice = true;
+        final String no_name = getResources().getString(R.string.no_name);
+
         /*
         Click listener for the multiplayer button, starts an Intent of ListPLayersActivity
          */
@@ -33,7 +35,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (et.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "No name was inserted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), no_name, Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
                     intent.putExtra("name",et.getText().toString());
@@ -46,7 +48,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (et.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "No name was inserted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), no_name, Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
 <<<<<<< Updated upstream
