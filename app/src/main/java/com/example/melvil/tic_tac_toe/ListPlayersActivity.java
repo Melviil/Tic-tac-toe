@@ -68,6 +68,11 @@ public class ListPlayersActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplication(), players.get(adapter.getItem(position)).toString(), Toast.LENGTH_LONG).show();
+                String line = adapter.getItem(position);
+                String chars = String.valueOf(line.charAt(0));
+                chars =  chars + String.valueOf(line.charAt(1));
+                Integer iD = Integer.parseInt(chars);
+                service_connectToDB.removeLineOnGame(iD);
             }
         });
         create.setOnClickListener(new View.OnClickListener() {

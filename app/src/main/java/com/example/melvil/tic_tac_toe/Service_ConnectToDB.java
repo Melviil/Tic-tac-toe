@@ -104,8 +104,14 @@ public class Service_ConnectToDB extends Service {
         }
     }
 
-    public void removeLineOngame(int id) {
-
+    public void removeLineOnGame(Integer id) {
+        TaskRemoveLineOnGames task = new TaskRemoveLineOnGames();
+        task.execute(removeLinesOnGames, id);
+        try {
+            Toast.makeText(getApplicationContext(),task.get().toString(),Toast.LENGTH_LONG).show();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     public class MyBinder extends Binder {
@@ -180,11 +186,6 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
         String name = (String) params[1];
         String data = "name=" + name;
         addLinesURL = (URL) params[0];
-     /*   try {
-            addLinesURL = new URL(addLinesURL.toString()+"?"+data);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } */
         try {
             connection = (HttpURLConnection) addLinesURL.openConnection();
             connection.setDoOutput(true);
@@ -195,21 +196,26 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
             outputStream.writeBytes(data);
             outputStream.flush();
             outputStream.close();
+
             int responseCode = connection.getResponseCode();
             System.out.println("\nSending 'POST' request to URL : " + addLinesURL);
-            System.out.println("Post parameters : " + data);
+            System.out.println("Post parameters : " + addLinesURL);
             System.out.println("Response Code : " + responseCode);
 
-           /* BufferedReader in = new BufferedReader(
+            BufferedReader in = new BufferedReader(
                     new InputStreamReader(connection.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
 
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
             in.close();
-            System.out.println(response.toString()); */
+
+            //print result
+            System.out.println(response.toString());
+
+
             finish = true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -222,9 +228,48 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
  * Class who can remove lines on the DB
  */
 //TODO Complete this class
-class TaskRemoveLineOnGames extends AsyncTask<Integer, Integer, Boolean> {
+class TaskRemoveLineOnGames extends AsyncTask<Object, Integer, Boolean> {
+    HttpURLConnection connection;
+    URL removeLineWithId;
     @Override
-    protected Boolean doInBackground(Integer... params) {
-        return null;
+    protected Boolean doInBackground(Object... params) {
+
+        removeLineWithId = (URL) params[0];
+        Integer id = (Integer) params[1];
+        String data = "id=" + id;
+        try {
+            connection = (HttpURLConnection) removeLineWithId.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestMethod("POST");
+
+            DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+            outputStream.writeBytes(data);
+            outputStream.flush();
+            outputStream.close();
+
+            int responseCode = connection.getResponseCode();
+            System.out.println("\nSending 'POST' request to URL : " + removeLineWithId);
+            System.out.println("Post parameters : " + data);
+            System.out.println("Response Code : " + responseCode);
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            //print result
+            System.out.println(response.toString());
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 }
