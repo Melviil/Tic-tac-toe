@@ -91,9 +91,21 @@ public class GameActivity extends Activity {
         String Player = getResources().getString(R.string.Player);
         String just_won = getResources().getString(R.string.just_won);
 
+
+
+
         // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_gameover);
+
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+
+        dialog.setTitle("You just won!");
+
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+
         dialog.setTitle(Player+" '"+team+"' "+just_won);
 
         // set the custom dialog components - text, image and button
