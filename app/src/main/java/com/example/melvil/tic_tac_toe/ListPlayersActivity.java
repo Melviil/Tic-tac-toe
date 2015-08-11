@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+<<<<<<< Updated upstream
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
+=======
+>>>>>>> Stashed changes
 
 /**
  * Class who list the player waiting for a challenger
@@ -24,6 +27,7 @@ import java.util.Map;
  */
 public class ListPlayersActivity extends Activity {
     Service_ConnectToDB service_connectToDB;
+<<<<<<< Updated upstream
     String name;
     ProgressBar progressBar;
     ListView listView;
@@ -34,6 +38,12 @@ public class ListPlayersActivity extends Activity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             service_connectToDB = ((Service_ConnectToDB.MyBinder) service).getMyService();
+=======
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+           service_connectToDB = ((Service_ConnectToDB.MyBinder)service).getMyservice();
+>>>>>>> Stashed changes
         }
 
         @Override
@@ -41,7 +51,10 @@ public class ListPlayersActivity extends Activity {
             service_connectToDB = null;
         }
     };
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,4 +107,13 @@ public class ListPlayersActivity extends Activity {
         bindService(i, serviceConnection, BIND_AUTO_CREATE);
     }
 
+<<<<<<< Updated upstream
+=======
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent i = new Intent(getApplicationContext(),Service_ConnectToDB.class);
+        bindService(i,serviceConnection,BIND_AUTO_CREATE);
+    }
+>>>>>>> Stashed changes
 }

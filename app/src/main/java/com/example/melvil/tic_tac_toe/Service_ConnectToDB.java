@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.IBinder;
+<<<<<<< Updated upstream
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -12,6 +13,9 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+=======
+import android.widget.Toast;
+>>>>>>> Stashed changes
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -89,9 +93,18 @@ public class Service_ConnectToDB extends Service {
 
             while (!jsonArray.isNull(index)) {
                 try {
+<<<<<<< Updated upstream
                     jsonObject = jsonArray.getJSONObject(index);
                     namesAndIp.put(jsonObject.getString("idPlayers") + " " + jsonObject.getString("name"), new URI(jsonObject.getString("IP")));
                 } catch (JSONException | URISyntaxException e) {
+=======
+                    while ((cp = reader.read()) != -1) {
+                        stringBuilder.append((char) cp);
+                    }
+                    String json=stringBuilder.toString();
+                    Toast.makeText(getApplicationContext(),json,Toast.LENGTH_SHORT);
+                } catch (Exception e) {
+>>>>>>> Stashed changes
                     e.printStackTrace();
                 }
                 index++;

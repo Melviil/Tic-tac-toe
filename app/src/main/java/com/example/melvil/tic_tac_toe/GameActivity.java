@@ -79,16 +79,24 @@ public class GameActivity extends Activity {
         return false;
     }
 
+<<<<<<< HEAD
     private void showDialog(){
+=======
+    private void showDialog(String team){
+        String Player = getResources().getString(R.string.Player);
+        String just_won = getResources().getString(R.string.just_won);
+>>>>>>> 949bf5f... Language automatic support
 
         // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_gameover);
+<<<<<<< HEAD
         dialog.setTitle("You just won!");
+=======
+        dialog.setTitle(Player+" '"+team+"' "+just_won);
+>>>>>>> 949bf5f... Language automatic support
 
         // set the custom dialog components - text, image and button
-        //TextView text = (TextView) dialog.findViewById(R.id.text);
-        //text.setText("Android custom dialog example!");
         ImageView image = (ImageView) dialog.findViewById(R.id.image);
         image.setImageResource(R.drawable.rond);
 

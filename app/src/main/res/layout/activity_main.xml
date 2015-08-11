@@ -9,12 +9,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Welcome to this awesome tic tac toe"
+        android:text="@string/welcome"
         android:id="@+id/textView2"
         android:textSize="20dp"
         android:textColor="@android:color/white"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -23,12 +24,13 @@
         android:src="@drawable/eng"
         android:background="@null"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What&apos;s your name ?"
+        android:text="@string/your_name"
         android:id="@+id/textView"
         android:layout_marginTop="44dp"
         android:textColor="@android:color/white"
@@ -44,32 +46,40 @@
         android:textColor="@android:color/white"
         android:textSize="15dp"
         android:layout_alignTop="@+id/drapeau"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Play"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:text="@string/Play_offline"
         android:id="@+id/play"
         android:layout_above="@+id/multi"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        style="@style/game_button" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/editText"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="David"
+        android:textSize="24sp"
+        android:background="#417985"
+        android:padding="5dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Multiplayer"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:text="@string/Play_online"
         android:id="@+id/multi"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        style="@style/game_button"
+        android:layout_marginBottom="24dp" />
 
 </RelativeLayout>
