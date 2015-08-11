@@ -18,5 +18,4 @@ mysqli_query($con,"INSERT INTO Players (IP,name) VALUES(\"$IP\",\"$name\")");
 
 mysql_close($con);
 
-
 ?>

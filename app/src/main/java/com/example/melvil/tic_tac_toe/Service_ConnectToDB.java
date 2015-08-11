@@ -8,22 +8,20 @@ import android.os.IBinder;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -98,15 +96,15 @@ public class Service_ConnectToDB extends Service {
 
     public void addLineOnGame(String name) {
         TaskAddLineOnGames task = new TaskAddLineOnGames();
-        task.execute(addLineOnGames,name);
+        task.execute(addLineOnGames, name);
         try {
-            Toast.makeText(getApplicationContext(),task.get().toString(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), task.get().toString(), Toast.LENGTH_LONG).show();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
 
-    public void rmeoveLineOngame(int id) {
+    public void removeLineOngame(int id) {
 
     }
 
@@ -173,26 +171,45 @@ class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
  */
 //TODO Complete this class
 class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
-    URL addLinesIRL;
-    String parameters;
-    OutputStreamWriter request=null;
-    Boolean finish =  false;
+    URL addLinesURL;
+    Boolean finish = false;
+    HttpURLConnection connection;
+
     @Override
     protected Boolean doInBackground(Object... params) {
-        String name =  (String)params[1];
-        parameters = "name="+name;
-        addLinesIRL = (URL)params[0];
-        try {
-            addLinesIRL = new URL(addLinesIRL.toString()+"?"+parameters);
+        String name = (String) params[1];
+        String data = "name=" + name;
+        addLinesURL = (URL) params[0];
+     /*   try {
+            addLinesURL = new URL(addLinesURL.toString()+"?"+data);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
+        } */
         try {
-            HttpURLConnection httpURLConnection = (HttpURLConnection)addLinesIRL.openConnection();
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
-            httpURLConnection.connect();
-            httpURLConnection.disconnect();
+            connection = (HttpURLConnection) addLinesURL.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestMethod("POST");
+
+            DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+            outputStream.writeBytes(data);
+            outputStream.flush();
+            outputStream.close();
+            int responseCode = connection.getResponseCode();
+            System.out.println("\nSending 'POST' request to URL : " + addLinesURL);
+            System.out.println("Post parameters : " + data);
+            System.out.println("Response Code : " + responseCode);
+
+           /* BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            System.out.println(response.toString()); */
             finish = true;
         } catch (IOException e) {
             e.printStackTrace();
