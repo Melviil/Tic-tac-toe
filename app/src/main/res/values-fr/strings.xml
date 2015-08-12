@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tic-Tac-Toe (fr)</string>
+    <string name="app_name">Morpion</string>
 
-    <string name="welcome">Bienvenue à ce grand jeu tic tac toe</string>
-    <string name="your_name">What\'s your name?</string>
-    <string name="Play_offline">jouer offline jeu</string>
-    <string name="Play_online">Play online multiplayer</string>
-    <string name="no_name">No name was inserted</string>
+    <string name="welcome">Bienvenue à ce super jeu de Morpion</string>
+    <string name="your_name">Quel est ton nom ?</string>
+    <string name="Play_offline">Joueur hors-ligne</string>
+    <string name="Play_online">Jouer à plusieur en ligne</string>
+    <string name="no_name">Pas de nom insérer</string>
 
     <!-- GameActivity -->
     <string name="Player">Joueur</string>
-    <string name="just_won">just won!</string>
-    <string name="back_to_menu">BACK TO MENU</string>
-    <string name="again_please">NICE, AGAIN PLEASE!</string>
+    <string name="just_won">Gagner!</string>
+    <string name="back_to_menu">RETOURNER AU MENU</string>
+    <string name="again_please">SUPER! ENCORE UN</string>
 
     <!-- WaitingForPlayerActivity -->
-    <string name="waiting_for_player">Waiting for a player</string>
+    <string name="waiting_for_player">Attente de joueur</string>
 
 
 </resources>

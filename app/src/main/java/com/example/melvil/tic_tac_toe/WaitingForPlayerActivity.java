@@ -95,6 +95,7 @@ public class WaitingForPlayerActivity extends Activity {
 
         // custom dialog
         final Dialog dialog = new Dialog(this);
+        dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_gameover);
         if(team.equals("x")) winner = name;
         else winner = (String) (name2.getText());

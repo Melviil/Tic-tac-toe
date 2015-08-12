@@ -55,6 +55,7 @@ public class GameActivity extends Activity {
                             b.setImageResource(R.drawable.rond);
                             if (checkForCompleted("o")) showDialog("o");
                         }
+                        b.setEnabled(false);
                     }
                 });
             }
@@ -90,6 +91,7 @@ public class GameActivity extends Activity {
 
         // custom dialog
         final Dialog dialog = new Dialog(this);
+        dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_gameover);
         dialog.setTitle(Player + " '" + team + "' " + just_won);
 
