@@ -16,8 +16,8 @@ public class TaskJoinAGame extends AsyncTask<Object,Void,Void> {
         HttpURLConnection connection;
         URL urlJoinAGame = (URL) params[0];
         Integer idPlayer1 = (Integer) params[1];
-        Integer idPlayer2 = (Integer) params[2];
-        String data = "idPlayer"+idPlayer1+"&idPlayer2"+idPlayer2;
+        String namePlayer2 = (String) params[2];
+        String data = "idPlayer"+idPlayer1+"&namePlayer2"+namePlayer2;
         try {
             connection = (HttpURLConnection) urlJoinAGame.openConnection();
             connection.setDoOutput(true);

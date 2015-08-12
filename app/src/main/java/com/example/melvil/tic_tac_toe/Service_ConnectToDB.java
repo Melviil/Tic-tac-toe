@@ -34,6 +34,9 @@ public class Service_ConnectToDB extends Service {
     URL removeLinesOnGames;
     URL getNamesAndIP;
     URL addLineOnGames;
+    URL urlgetBlob;
+    URL urlportBlob;
+    URL urljoinAGame;
 
 
     public Service_ConnectToDB() {
@@ -48,6 +51,7 @@ public class Service_ConnectToDB extends Service {
             this.getNamesAndIP = new URL("http://abbaye.noip.me/Android/getNamesandIP.php");
             this.addLineOnGames = new URL("http://abbaye.noip.me/Android/addLineOnGames.php");
             this.removeLinesOnGames = new URL("http://abbaye.noip.me/Android/removeLineOnGames.php");
+            this.urljoinAGame = new URL("http://abbaye.noip.me/Android/joinAGame.php");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -66,11 +70,11 @@ public class Service_ConnectToDB extends Service {
      */
     public Map<Integer, String> getNamesAndIp() {
         JSONArray jsonArray = null;
-        TaskGetNamesAndIps taskGetNamesAndIps;
+        TaskGetOpenGames taskGetOpenGames;
         try {
-            taskGetNamesAndIps = new TaskGetNamesAndIps();
-            taskGetNamesAndIps.execute(getNamesAndIP);
-            jsonArray = taskGetNamesAndIps.get();
+            taskGetOpenGames = new TaskGetOpenGames();
+            taskGetOpenGames.execute(getNamesAndIP);
+            jsonArray = taskGetOpenGames.get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
@@ -113,6 +117,16 @@ public class Service_ConnectToDB extends Service {
         }
     }
 
+    public void joinAGame(String name, Integer idPlayer1) {
+        TaskJoinAGame taskJoinAGame = new TaskJoinAGame();
+        taskJoinAGame.execute(urljoinAGame, idPlayer1, name);
+        try {
+            taskJoinAGame.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     public class MyBinder extends Binder {
         public Service_ConnectToDB getMyService() {
             return Service_ConnectToDB.this;
@@ -122,9 +136,11 @@ public class Service_ConnectToDB extends Service {
 
 /**
  * Task who returns the acces to de DB all the names and ip on a JSONArray.
+ * parameter URL = of the webservice
+ * return JSONArray with names and
  * Created by samuel on 10/08/15.
  */
-class TaskGetNamesAndIps extends AsyncTask<URL, Integer, JSONArray> {
+class TaskGetOpenGames extends AsyncTask<URL, Integer, JSONArray> {
 
     @Override
     protected void onPostExecute(JSONArray jsonArray) {
