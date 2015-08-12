@@ -10,13 +10,13 @@ import java.net.URL;
 /**
  * Created by samuel on 12/08/15.
  */
-public class TaskAddPlayer extends AsyncTask<Object,Void,Void> {
+public class TaskAddPlayer extends AsyncTask<Object, Void, Void> {
     @Override
     protected Void doInBackground(Object... params) {
         HttpURLConnection connection;
-        URL urlAddPlayer = (URL)params[0];
-        String name= (String)params[1];
-        String data = "name"+name;
+        URL urlAddPlayer = (URL) params[0];
+        String name = (String) params[1];
+        String data = "name=" + name;
         try {
             connection = (HttpURLConnection) urlAddPlayer.openConnection();
             connection.setDoOutput(true);

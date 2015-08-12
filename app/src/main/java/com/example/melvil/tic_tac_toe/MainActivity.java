@@ -59,10 +59,11 @@ public class MainActivity extends Activity {
                 if (et.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), no_name, Toast.LENGTH_SHORT).show();
                 } else {
+                    service_connectToDB.addPlayer(et.getText().toString());
                     prefs.edit().putString(PACKAGE_NAME, et.getText().toString()).apply();
                     Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
                     intent.putExtra("name", et.getText().toString());
-                    service_connectToDB.ad
+
                     startActivity(intent);
                 }
             }
@@ -78,8 +79,6 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(MainActivity.this, GameActivity.class);
                     intent.putExtra("name", et.getText().toString());
                     startActivity(intent);
-                    String str = (String) getIntent().getSerializableExtra("et");
-
                 }
             }
         });
@@ -104,6 +103,12 @@ public class MainActivity extends Activity {
         super.onResume();
         Intent i = new Intent(getApplicationContext(), Service_ConnectToDB.class);
         bindService(i, serviceConnection, BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(serviceConnection);
     }
 }
 
