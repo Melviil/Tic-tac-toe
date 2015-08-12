@@ -9,14 +9,19 @@ if (mysqli_connect_errno($con))
 }
 
 
-$IP = $_SERVER['REMOTE_ADDR'];
-$name = $_GET['name'];
 $name = $_POST['name'];
 
 
-mysqli_query($con,"INSERT INTO Players (IP,name) VALUES(\"$IP\",\"$name\")");
-$result = mysqli_query($con,"SELECT idPlayers FROM Players WHERE \"$IP\"=IP");
-mysqli_query($con,"INSERT INTO Game (idPlayer1) VALUES ($result)");
+
+$result = mysqli_query($con,"SELECT idPlayers FROM Players WHERE name=\"$name\"");
+//echo "Result = $result";
+while($row = mysqli_fetch_array($result)){
+    $data[]=$row[0];
+}
+
+$value = $data[0];
+mysqli_query($con,"INSERT INTO Game (idPlayer1) VALUES ($value)");
+
 
 mysql_close($con);
 
