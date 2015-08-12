@@ -54,7 +54,6 @@ public class ListPlayersActivity extends Activity {
         progressBar.setProgress(0);
         progressBar.setMax(100);
 
-
         progressBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
