@@ -67,7 +67,7 @@ public class ListPlayersActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                service_connectToDB.joinAGame(name,getKeyFromValue(players,adapter.getItem(position)));
             }
         });
         create.setOnClickListener(new View.OnClickListener() {
