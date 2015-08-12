@@ -66,7 +66,7 @@ public class ListPlayersActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                service_connectToDB.joinAGame(name,getKeyFromValue(players,adapter.getItem(position)));
+                service_connectToDB.joinAGame(name, getKeyFromValue(players, adapter.getItem(position)));
             }
         });
         create.setOnClickListener(new View.OnClickListener() {
@@ -96,4 +96,9 @@ public class ListPlayersActivity extends Activity {
         return null;
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(serviceConnection);
+    }
 }

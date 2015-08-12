@@ -131,7 +131,14 @@ public class Service_ConnectToDB extends Service {
     }
     public void addPlayer(String name){
         TaskAddPlayer task = new TaskAddPlayer();
-        task.execute(name)
+        task.execute(urlAddPlayer,name);
+        try {
+            task.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
     public class MyBinder extends Binder {
         public Service_ConnectToDB getMyService() {
