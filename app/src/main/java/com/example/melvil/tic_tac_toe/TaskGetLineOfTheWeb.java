@@ -17,11 +17,11 @@ import java.net.URL;
 /**
  * Created by samuel on 12/08/15.
  */
-public class TaskGetLineOfTheWeb extends AsyncTask<Object, Void, Object> {
+public class TaskGetLineOfTheWeb extends AsyncTask<Object, Void, JSONObject> {
 
     @Override
-    protected Object doInBackground(Object... params) {
-        Object[] result = new Object[2];
+    protected JSONObject doInBackground(Object... params) {
+        JSONObject jsonObject;
         HttpURLConnection connection;
         URL UrlGetLineOfGame = (URL) params[0];
         Integer idPlayer1 = (Integer) params[1];
@@ -51,11 +51,10 @@ public class TaskGetLineOfTheWeb extends AsyncTask<Object, Void, Object> {
                     response.append(inputLine);
                 }
                 JSONArray jsonArray = new JSONArray(response.toString());
-                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                 jsonObject = jsonArray.getJSONObject(0);
                 if (jsonObject.getString("idPlayer2") != null) {
                     finish = true;
-                    result[0] = true;
-                    result[1] = jsonObject;
+                    return jsonObject;
                 }
                 in.close();
                 connection.disconnect();
@@ -63,6 +62,6 @@ public class TaskGetLineOfTheWeb extends AsyncTask<Object, Void, Object> {
                 e.printStackTrace();
             }
         }
-        return result;
+        return null;
     }
 }

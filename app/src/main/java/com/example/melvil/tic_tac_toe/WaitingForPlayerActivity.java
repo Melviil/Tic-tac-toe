@@ -2,13 +2,20 @@ package com.example.melvil.tic_tac_toe;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Class who initiates a server socket for waiting for a challenger.
@@ -17,11 +24,27 @@ import android.widget.TextView;
 public class WaitingForPlayerActivity extends Activity {
     ImageButton[][] buttons;
     String name;
+    String namep2;
+    Integer idPlayer1;
+    Integer idPlayer2;
     String var;
     int i;
     int j;
     TextView name1;
     TextView name2;
+    Service_ConnectToDB service_connectToDB;
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            service_connectToDB = ((Service_ConnectToDB.MyBinder) service).getMyService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            service_connectToDB = null;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +120,7 @@ public class WaitingForPlayerActivity extends Activity {
         final Dialog dialog = new Dialog(this);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_gameover);
-        if(team.equals("x")) winner = name;
+        if (team.equals("x")) winner = name;
         else winner = (String) (name2.getText());
         dialog.setTitle(Player + " " + winner + " '" + team + "' " + just_won);
 
@@ -127,5 +150,30 @@ public class WaitingForPlayerActivity extends Activity {
             }
         });
     }
+    public void dialogInit(String name){
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.wait_dialog);
+        dialog.show();
+        JSONObject jsonObject;
+        jsonObject = service_connectToDB.waitToGetJSON(name);
+        try {
+            idPlayer1 = jsonObject.getInt("idPlayer1");
+            idPlayer2 = jsonObject.getInt("idPlayer2");
+            namep2 = jsonObject.getString("name");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        name2.setText(namep2);
+        dialog.dismiss();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent i =  new Intent(getApplicationContext(),Service_ConnectToDB.class);
+        bindService(i,serviceConnection,BIND_AUTO_CREATE);
 
+
+
+        this.dialogInit(name);
+    }
 }

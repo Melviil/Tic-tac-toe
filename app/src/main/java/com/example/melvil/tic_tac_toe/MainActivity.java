@@ -63,7 +63,6 @@ public class MainActivity extends Activity {
                     prefs.edit().putString(PACKAGE_NAME, et.getText().toString()).apply();
                     Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
                     intent.putExtra("name", et.getText().toString());
-
                     startActivity(intent);
                 }
             }

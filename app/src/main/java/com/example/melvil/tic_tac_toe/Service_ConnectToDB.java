@@ -134,11 +134,21 @@ public class Service_ConnectToDB extends Service {
         task.execute(urlAddPlayer,name);
         try {
             task.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
+    }
+    public JSONObject waitToGetJSON(String namep1){
+        TaskGetLineOfTheWeb task = new TaskGetLineOfTheWeb();
+        task.execute(namep1);
+        JSONObject jsonObject=null;
+        try {
+            jsonObject = task.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+
     }
     public class MyBinder extends Binder {
         public Service_ConnectToDB getMyService() {
