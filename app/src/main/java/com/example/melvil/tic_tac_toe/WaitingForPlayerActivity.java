@@ -23,6 +23,7 @@ import org.json.JSONObject;
  */
 public class WaitingForPlayerActivity extends Activity {
     ImageButton[][] buttons;
+    Button start;
     String name;
     String namep2;
     Integer idPlayer1;
@@ -49,10 +50,13 @@ public class WaitingForPlayerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mutliplayergame);
-        name = getIntent().getExtras().getString("name");
+        if(getIntent().getExtras()!=null) {
+            name = getIntent().getExtras().getString("name");
+        }
         name1 = (TextView) findViewById(R.id.name1);
         name2 = (TextView) findViewById(R.id.name2);
         name1.setText(name);
+        start = (Button) findViewById(R.id.start);
         buttons = new ImageButton[3][3];
         buttons[0][0] = (ImageButton) findViewById(R.id.button1);
         buttons[0][1] = (ImageButton) findViewById(R.id.button2);
@@ -87,6 +91,12 @@ public class WaitingForPlayerActivity extends Activity {
                 });
             }
         }
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogInit(name);
+            }
+        });
     }
 
     private boolean checkForCompleted(String symbol) {
@@ -150,7 +160,8 @@ public class WaitingForPlayerActivity extends Activity {
             }
         });
     }
-    public void dialogInit(String name){
+
+    public void dialogInit(String name) {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.wait_dialog);
         dialog.show();
@@ -166,14 +177,11 @@ public class WaitingForPlayerActivity extends Activity {
         name2.setText(namep2);
         dialog.dismiss();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        Intent i =  new Intent(getApplicationContext(),Service_ConnectToDB.class);
-        bindService(i,serviceConnection,BIND_AUTO_CREATE);
-
-
-
-        this.dialogInit(name);
+        Intent i = new Intent(getApplicationContext(), Service_ConnectToDB.class);
+        bindService(i, serviceConnection, BIND_AUTO_CREATE);
     }
 }
