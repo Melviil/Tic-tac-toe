@@ -9,9 +9,13 @@
     <string name="Play_online">Hrej online multiplayer</string>
     <string name="no_name">Žádné jméno nebylo zadáno!</string>
 
+    <!-- GameActivity -->
     <string name="Player">Hráč</string>
     <string name="just_won">právě vyhrál!</string>
     <string name="back_to_menu">ZPĚT DO MENU</string>
     <string name="again_please">PĚKNĚ, ZNOVU PROSÍM!</string>
+
+    <!-- WaitingForPlayerActivity -->
+    <string name="waiting_for_player">Čekání na hráče</string>
 
 </resources>

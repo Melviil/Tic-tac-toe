@@ -88,34 +88,20 @@ public class GameActivity extends Activity {
         String Player = getResources().getString(R.string.Player);
         String just_won = getResources().getString(R.string.just_won);
 
-
         // custom dialog
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_gameover);
-
-        dialog.setTitle("You just won!");
-
-        dialog.setTitle(Player + " '" + team + "' " + just_won);
-
-
-        dialog.setTitle(Player + " '" + team + "' " + just_won);
-
-        dialog.setTitle("You just won!");
-
-        dialog.setTitle(Player + " '" + team + "' " + just_won);
-
-        dialog.setTitle(Player + " '" + team + "' " + just_won);
-
-
         dialog.setTitle(Player + " '" + team + "' " + just_won);
 
         // set the custom dialog components - text, image and button
         ImageView image = (ImageView) dialog.findViewById(R.id.image);
         if (team == "o") image.setImageResource(R.drawable.rond);
         if (team == "x") image.setImageResource(R.drawable.croix);
-
         Button dialogButtonMenu = (Button) dialog.findViewById(R.id.dialogButtonMenu);
         Button dialogButtonAgain = (Button) dialog.findViewById(R.id.dialogButtonAgain);
+
+        dialog.show();
+
         // if button is clicked, close the custom dialog
         dialogButtonMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,8 +118,6 @@ public class GameActivity extends Activity {
                 startActivity(getIntent());
             }
         });
-
-        dialog.show();
     }
 
 }

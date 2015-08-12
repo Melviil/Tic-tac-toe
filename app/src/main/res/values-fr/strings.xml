@@ -9,10 +9,14 @@
     <string name="Play_online">Play online multiplayer</string>
     <string name="no_name">No name was inserted</string>
 
+    <!-- GameActivity -->
     <string name="Player">Joueur</string>
     <string name="just_won">just won!</string>
     <string name="back_to_menu">BACK TO MENU</string>
     <string name="again_please">NICE, AGAIN PLEASE!</string>
+
+    <!-- WaitingForPlayerActivity -->
+    <string name="waiting_for_player">Waiting for a player</string>
 
 
 </resources>
