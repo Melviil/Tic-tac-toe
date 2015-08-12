@@ -37,6 +37,7 @@ public class Service_ConnectToDB extends Service {
     URL urlgetBlob;
     URL urlportBlob;
     URL urljoinAGame;
+    URL urlAddPlayer;
 
 
     public Service_ConnectToDB() {
@@ -52,6 +53,8 @@ public class Service_ConnectToDB extends Service {
             this.addLineOnGames = new URL("http://abbaye.noip.me/Android/addLineOnGames.php");
             this.removeLinesOnGames = new URL("http://abbaye.noip.me/Android/removeLineOnGames.php");
             this.urljoinAGame = new URL("http://abbaye.noip.me/Android/joinAGame.php");
+            this.urlAddPlayer = new URL("http://abbaye.noip.me/Android/addAPlayer.php");
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -126,12 +129,16 @@ public class Service_ConnectToDB extends Service {
             e.printStackTrace();
         }
     }
-
+    public void addPlayer(String name){
+        TaskAddPlayer task = new TaskAddPlayer();
+        task.execute(name)
+    }
     public class MyBinder extends Binder {
         public Service_ConnectToDB getMyService() {
             return Service_ConnectToDB.this;
         }
     }
+
 }
 
 /**
@@ -206,8 +213,6 @@ class TaskAddLineOnGames extends AsyncTask<Object, Integer, Boolean> {
             outputStream.close();
 
             int responseCode = connection.getResponseCode();
-            System.out.println("\nSending 'POST' request to URL : " + addLinesURL);
-            System.out.println("Post parameters : " + addLinesURL);
             System.out.println("Response Code : " + responseCode);
 
             connection.disconnect();

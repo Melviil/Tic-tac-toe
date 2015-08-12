@@ -1,10 +1,13 @@
 package com.example.melvil.tic_tac_toe;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,13 +16,25 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+    public static String PACKAGE_NAME;
     public EditText et;
     ImageButton b;
     Button play;
     Boolean choice;
     Button multilayer;
-    public static String PACKAGE_NAME;
     SharedPreferences prefs;
+    Service_ConnectToDB service_connectToDB;
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            service_connectToDB = ((Service_ConnectToDB.MyBinder) service).getMyService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            service_connectToDB = null;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +62,7 @@ public class MainActivity extends Activity {
                     prefs.edit().putString(PACKAGE_NAME, et.getText().toString()).apply();
                     Intent intent = new Intent(getApplicationContext(), ListPlayersActivity.class);
                     intent.putExtra("name", et.getText().toString());
+                    service_connectToDB.ad
                     startActivity(intent);
                 }
             }
@@ -83,6 +99,12 @@ public class MainActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent i = new Intent(getApplicationContext(), Service_ConnectToDB.class);
+        bindService(i, serviceConnection, BIND_AUTO_CREATE);
+    }
 }
 
 
