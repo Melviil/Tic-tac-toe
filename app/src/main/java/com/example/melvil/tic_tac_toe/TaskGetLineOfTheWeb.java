@@ -24,8 +24,8 @@ public class TaskGetLineOfTheWeb extends AsyncTask<Object, Void, JSONObject> {
         JSONObject jsonObject;
         HttpURLConnection connection;
         URL UrlGetLineOfGame = (URL) params[0];
-        Integer idPlayer1 = (Integer) params[1];
-        String data = "idPlayer1=" + idPlayer1;
+        String namep1 = (String) params[1];
+        String data = "namep1=" + namep1;
         Boolean finish = false;
         while (!finish) {
             try {

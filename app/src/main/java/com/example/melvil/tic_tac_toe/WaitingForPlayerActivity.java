@@ -26,6 +26,7 @@ public class WaitingForPlayerActivity extends Activity {
     Button start;
     String name;
     String namep2;
+    TextView tvWaiting;
     Integer idPlayer1;
     Integer idPlayer2;
     String var;
@@ -55,6 +56,7 @@ public class WaitingForPlayerActivity extends Activity {
         }
         name1 = (TextView) findViewById(R.id.name1);
         name2 = (TextView) findViewById(R.id.name2);
+        tvWaiting = (TextView)findViewById(R.id.textView6);
         name1.setText(name);
         start = (Button) findViewById(R.id.start);
         buttons = new ImageButton[3][3];
@@ -94,7 +96,7 @@ public class WaitingForPlayerActivity extends Activity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogInit(name);
+                initWait(name);
             }
         });
     }
@@ -161,10 +163,7 @@ public class WaitingForPlayerActivity extends Activity {
         });
     }
 
-    public void dialogInit(String name) {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.wait_dialog);
-        dialog.show();
+    public void initWait(String name) {
         JSONObject jsonObject;
         jsonObject = service_connectToDB.waitToGetJSON(name);
         try {
@@ -175,7 +174,7 @@ public class WaitingForPlayerActivity extends Activity {
             e.printStackTrace();
         }
         name2.setText(namep2);
-        dialog.dismiss();
+        tvWaiting.setText("Player Ready !");
     }
 
     @Override

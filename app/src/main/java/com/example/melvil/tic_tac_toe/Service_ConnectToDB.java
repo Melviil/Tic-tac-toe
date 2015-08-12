@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -35,9 +36,10 @@ public class Service_ConnectToDB extends Service {
     URL getNamesAndIP;
     URL addLineOnGames;
     URL urlgetBlob;
-    URL urlportBlob;
+    URL urlpostBlob;
     URL urljoinAGame;
     URL urlAddPlayer;
+    URL urlgetMyGame;
 
 
     public Service_ConnectToDB() {
@@ -54,6 +56,8 @@ public class Service_ConnectToDB extends Service {
             this.removeLinesOnGames = new URL("http://abbaye.noip.me/Android/removeLineOnGames.php");
             this.urljoinAGame = new URL("http://abbaye.noip.me/Android/joinAGame.php");
             this.urlAddPlayer = new URL("http://abbaye.noip.me/Android/addAPlayer.php");
+            this.urlgetMyGame = new URL("http://abbaye.noip.me/Android/getLineOfGame.php");
+            this.urlpostBlob =  new URL("http://abbaye.noip.me/Android/portBlob.php");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -119,6 +123,16 @@ public class Service_ConnectToDB extends Service {
             e.printStackTrace();
         }
     }
+    public void postBlob(Integer id1,Integer id2,ArrayList<String> hits){
+        TaskPostBlob taskPostBlob = new TaskPostBlob();
+        String hitss =  hits.toString();
+        taskPostBlob.execute(urlpostBlob,id1,id2,hitss);
+        try {
+            taskPostBlob.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void joinAGame(String name, Integer idPlayer1) {
         TaskJoinAGame taskJoinAGame = new TaskJoinAGame();
@@ -140,7 +154,7 @@ public class Service_ConnectToDB extends Service {
     }
     public JSONObject waitToGetJSON(String namep1){
         TaskGetLineOfTheWeb task = new TaskGetLineOfTheWeb();
-        task.execute(namep1);
+        task.execute(urlgetMyGame,namep1);
         JSONObject jsonObject=null;
         try {
             jsonObject = task.get();
