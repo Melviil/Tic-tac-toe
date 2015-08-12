@@ -87,9 +87,8 @@ public class Service_ConnectToDB extends Service {
                 }
                 index++;
             }
-
         } else {
-            Toast.makeText(getApplicationContext(), "Nobody online", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Nobody  online", Toast.LENGTH_LONG).show();
         }
         return namesAndIp;
     }

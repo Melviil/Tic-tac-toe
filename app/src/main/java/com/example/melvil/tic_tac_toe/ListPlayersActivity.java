@@ -67,7 +67,6 @@ public class ListPlayersActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO Compltete this.
 
             }
         });
