@@ -17,6 +17,8 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Class who initiates a server socket for waiting for a challenger.
  * Created by samuel on 10/08/15.
@@ -26,6 +28,8 @@ public class WaitingForPlayerActivity extends Activity {
     Button start;
     String name;
     String namep2;
+    Integer count;
+    ArrayList<String> hits;
     TextView tvWaiting;
     Integer idPlayer1;
     Integer idPlayer2;
@@ -51,13 +55,12 @@ public class WaitingForPlayerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mutliplayergame);
-        if(getIntent().getExtras()!=null) {
-            name = getIntent().getExtras().getString("name");
-        }
+        name = getIntent().getExtras().getString("name");
         name1 = (TextView) findViewById(R.id.name1);
         name2 = (TextView) findViewById(R.id.name2);
-        tvWaiting = (TextView)findViewById(R.id.textView6);
-        name1.setText(name);
+        tvWaiting = (TextView) findViewById(R.id.textView6);
+        hits = new ArrayList<>();
+        count = 0;
         start = (Button) findViewById(R.id.start);
         buttons = new ImageButton[3][3];
         buttons[0][0] = (ImageButton) findViewById(R.id.button1);
@@ -77,7 +80,8 @@ public class WaitingForPlayerActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         ImageButton b = (ImageButton) v;
-
+                        int x = i;
+                        int y = j;
                         if (var == "o") {
                             var = "x";
                             b.setTag(var);
@@ -89,6 +93,8 @@ public class WaitingForPlayerActivity extends Activity {
                             b.setImageResource(R.drawable.rond);
                             if (checkForCompleted("o")) showDialog("o");
                         }
+                        played(x, y);
+                        waitingPlay();
                     }
                 });
             }
@@ -173,7 +179,14 @@ public class WaitingForPlayerActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        name2.setText(namep2);
+        if (this.name == namep2) {
+            name2.setText(this.name);
+        }
+        if (this.name != namep2){
+            name1.setText(this.name);
+            name2.setText(namep2);
+        }
+        service_connectToDB.postBlob(idPlayer1, idPlayer2, hits);
         tvWaiting.setText("Player Ready !");
     }
 
@@ -182,5 +195,23 @@ public class WaitingForPlayerActivity extends Activity {
         super.onResume();
         Intent i = new Intent(getApplicationContext(), Service_ConnectToDB.class);
         bindService(i, serviceConnection, BIND_AUTO_CREATE);
+    }
+
+    public void waitingPlay() {
+        while (hits == service_connectToDB.getBlob(idPlayer1, idPlayer2)) {
+
+        }
+        buttons[Character.getNumericValue(hits.get(count).charAt(0))][Character.getNumericValue(hits.get(count).charAt(2))].callOnClick();
+    }
+
+    public void played(int x, int y) {
+        hits.add(x + "" + y);
+        service_connectToDB.postBlob(idPlayer1, idPlayer2, hits);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(serviceConnection);
     }
 }

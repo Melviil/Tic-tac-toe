@@ -28,7 +28,7 @@ public class TaskPostBlob extends AsyncTask<Object, Void, Void> {
         try {
             data = "idPlayer1=" + URLEncoder.encode(idPlayer1.toString(), "UTF-8") +
                     "&idPlayer2=" + URLEncoder.encode(idPlayer2.toString(), "UTF-8") +
-                    "&data=" + URLEncoder.encode(hits, "UTF-8");
+                    "&data=" + hits;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

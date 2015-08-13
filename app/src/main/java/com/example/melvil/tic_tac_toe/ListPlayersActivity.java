@@ -68,6 +68,7 @@ public class ListPlayersActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 service_connectToDB.joinAGame(name, getKeyFromValue(players, adapter.getItem(position)));
                 Intent intent = new Intent(getApplicationContext(), WaitingForPlayerActivity.class);
+                intent.putExtra("name",name);
                 startActivity(intent);
             }
         });

@@ -20,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -57,7 +58,8 @@ public class Service_ConnectToDB extends Service {
             this.urljoinAGame = new URL("http://abbaye.noip.me/Android/joinAGame.php");
             this.urlAddPlayer = new URL("http://abbaye.noip.me/Android/addAPlayer.php");
             this.urlgetMyGame = new URL("http://abbaye.noip.me/Android/getLineOfGame.php");
-            this.urlpostBlob =  new URL("http://abbaye.noip.me/Android/portBlob.php");
+            this.urlpostBlob = new URL("http://abbaye.noip.me/Android/postBlob.php");
+            this.urlgetBlob = new URL("http://abbaye.noip.me/Android/getBlob.php");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -123,10 +125,32 @@ public class Service_ConnectToDB extends Service {
             e.printStackTrace();
         }
     }
-    public void postBlob(Integer id1,Integer id2,ArrayList<String> hits){
+
+    public ArrayList<String> getBlob(Integer id1, Integer id2) {
+        TaskGetBlob task = new TaskGetBlob();
+        task.execute(urlgetBlob, id1, id2);
+        ArrayList<String> list = null;
+        String s1 = null;
+        try {
+            s1 = task.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (s1 != null) {
+            s1 = s1.replace("[", "");
+            s1 = s1.replace("]", "");
+            list = new ArrayList<>(Arrays.asList(s1.split(",")));
+        }
+        return list;
+    }
+
+    public void postBlob(Integer id1, Integer id2, ArrayList<String> hits) {
         TaskPostBlob taskPostBlob = new TaskPostBlob();
-        String hitss =  hits.toString();
-        taskPostBlob.execute(urlpostBlob,id1,id2,hitss);
+        String hitss = hits.toString();
+        taskPostBlob.execute(urlpostBlob, id1, id2, hitss);
         try {
             taskPostBlob.get();
         } catch (InterruptedException | ExecutionException e) {
@@ -143,19 +167,21 @@ public class Service_ConnectToDB extends Service {
             e.printStackTrace();
         }
     }
-    public void addPlayer(String name){
+
+    public void addPlayer(String name) {
         TaskAddPlayer task = new TaskAddPlayer();
-        task.execute(urlAddPlayer,name);
+        task.execute(urlAddPlayer, name);
         try {
             task.get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
-    public JSONObject waitToGetJSON(String namep1){
+
+    public JSONObject waitToGetJSON(String namep1) {
         TaskGetLineOfTheWeb task = new TaskGetLineOfTheWeb();
-        task.execute(urlgetMyGame,namep1);
-        JSONObject jsonObject=null;
+        task.execute(urlgetMyGame, namep1);
+        JSONObject jsonObject = null;
         try {
             jsonObject = task.get();
         } catch (InterruptedException | ExecutionException e) {
@@ -164,6 +190,7 @@ public class Service_ConnectToDB extends Service {
         return jsonObject;
 
     }
+
     public class MyBinder extends Binder {
         public Service_ConnectToDB getMyService() {
             return Service_ConnectToDB.this;

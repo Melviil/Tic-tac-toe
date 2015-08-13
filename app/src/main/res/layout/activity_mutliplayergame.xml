@@ -178,7 +178,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Waiting for a player"
         android:id="@+id/textView6"
         android:layout_alignBottom="@+id/start"
         android:layout_alignParentLeft="true"
