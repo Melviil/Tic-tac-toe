@@ -7,10 +7,12 @@ if (mysqli_connect_errno($con))
    echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
- $file = $_FILES["game"];
- $id = $_POST["id"];
-    $sql = "INSERT INTO Game (TabofPlayed,idPlayer) VALUES ($file,$id)";
-    mysql_query($con,$sql);
+    $idPlayer1 = $_POST["idPlayer1"];
+    $idPlayer2 = $_POST["idPlayer2"];
+    $data = $_POST['data'];
 
-mysql_close();
+    $sql = "UPDATE Game SET TabofPlayed=\"$data\" WHERE idPlayer1 = $idPlayer1 AND idPlayer2 = $idPlayer2";
+    mysqli_query($con,$sql);
+
+mysql_close($con);
 ?>

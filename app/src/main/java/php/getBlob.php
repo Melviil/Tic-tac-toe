@@ -6,12 +6,16 @@ if (mysqli_connect_errno($con))
 {
    echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-    $id1 = $_POST['id1'];
-    $id2 = $_POST['id2'];
+    $id1 = $_POST['idPlayer1'];
+    $id2 = $_POST['idPlayer2'];
     $sql = "SELECT TabofPlayed FROM Game WHERE $id1 = idPlayer1 AND $id2 = idPlayer2 ";
-    $result = mysql_query($con,$sql);
+    $result = mysqli_query($con,$sql);
+    
+while($row = mysqli_fetch_array($result)){    
+    $data[] = $row[0];
+}
+    $value = $data[0];
+    print($value);
 
-    print($result);
-
-mysql_close();
+mysql_close($con);
 ?>
